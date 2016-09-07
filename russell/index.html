@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amari's Music History App</title>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- NOTE NOTE NOTE! in order to serve this app, run http-server from the root folder (music-history-api-team-amari) and add /russell/ to the URL in your browser. This is because bower components are a sibling folder to russell, so we need to serve at the root in order to be able to access them.  -->
+
+  <div ng-app="Russell">
+    <div ng-view></div>
+  </div>
+
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="app/main.js"></script>
+
+</body>
+</html>
