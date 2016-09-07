@@ -8,31 +8,26 @@ from hanna.models import Album, Artist, Song
 
 class AlbumSerializer(serializers.HyperlinkedModelSerializer):
 
+	songs = SongSerializer(many=True, read_only=True)
+
     class Meta:
         model = Album
-        fields = ('id', 'url', 'first_name', 'last_name', 'habitat')
+        fields = ('id', 'url', 'title', 'songs')
 
 
 class ArtistSerializer(serializers.HyperlinkedModelSerializer):
-# Uncomment out the following lines to see how the representation
-# of the list of related information changes in the JSON. It will
-# use the __str__ value of the object instance that you specify
-# in models.py.
-#
-# animals = serializers.StringRelatedField(many=True)
-# employees = serializers.StringRelatedField(many=True)
 
-# Specifying the specific serializer for a nested relationship (i.e. a
-# list of items in a one-to-many relationship) will put the full object
-# representation in the list instead of just the URI. Comment out the
-# following lines to see it in action.
-#
-# employees = EmployeeSerializer(many=True, read_only=True)
-# animals = AnimalSerializer(many=True, read_only=True)
+	albums = AlbumSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Artist
+        	fields = ('id', 'url', 'title', 'albums')
 
 
-      class Meta:
-              model = Artist
-                  fields = ('id', 'url', 'first_name', 'last_name', 'habitat')
+class SongSerializer(serializers.HyperlinkedModelSerializer):
 
+	artists = ArtistSerializer(many=True, read_only=True)
 
+	class Meta:
+	        model = Song
+	            fields = ('id', 'url', 'title', 'artists')
