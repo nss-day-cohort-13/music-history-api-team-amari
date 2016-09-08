@@ -7,19 +7,23 @@ class Artist(models.Model):
 
     def __str__(self):
         return "{}: {}".format(self.id, self.name)
-
-
-class Song(models.Model):
-    title = models.CharField(max_length=55)
-
-    def __str__(self):
-        return "{}: {}".format(self.id, self.title)
-
+    def __unicode__(self):
+        return "{}: {}".format(self.id, self.name)
 
 class Album(models.Model):
     title = models.CharField(max_length=55)
-    songs = models.ManyToManyField(Song)
     artists = models.ManyToManyField(Artist)
 
     def __str__(self):
+        return "{}: {}".format(self.id, self.title)
+    def __unicode__(self):
+        return "{}: {}".format(self.id, self.title)
+
+class Song(models.Model):
+    title = models.CharField(max_length=55)
+    albums = models.ManyToManyField(Album)
+
+    def __str__(self):
+        return "{}: {}".format(self.id, self.title)
+    def __unicode__(self):
         return "{}: {}".format(self.id, self.title)
