@@ -40,6 +40,12 @@
               <input type="text" id="title" ng-model="modal.songdetail.title">
             </div>
           </div>
+            <label class="col-xs-2 col-form-label" for="album">Album</label>
+            <div class="col-xs-10">
+              <select ng-model="modal.songdetail.albums[0]">
+                <option ng-repeat="album in modal.albums" value="album">{{ album.title }}</option>
+              </select>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
