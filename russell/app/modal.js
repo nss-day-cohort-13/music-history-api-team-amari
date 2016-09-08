@@ -4,7 +4,6 @@ angular.module("Russell")
     $scope.songdetail = null;
     const errorHandle = (e) => console.log(e);
 
-    console.log("song id", songId );
     RootFactory.getRoot()
       .then((root) => {
         return $http.get(`${root.songs}${songId}`);
@@ -14,9 +13,20 @@ angular.module("Russell")
         $timeout();
       });
 
-    // TODO: add an argument pass here for delete.
-    $scope.ok = function () {
+    $scope.edit = function (url) {
+      console.log("url", url );
       $uibModalInstance.close();
+    };
+
+    $scope.delete = function (url) {
+      return $http.delete(`${url}`)
+      .then(()=> {
+        console.log("successfully deleted I think");
+        $scope.$emit("reloadPagePlease");
+      }, errorHandle)
+      .then(()=> {
+        $uibModalInstance.close();
+      });
     };
 
     $scope.cancel = function () {

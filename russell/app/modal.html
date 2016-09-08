@@ -6,6 +6,8 @@
 
   <div class="modal-body">
     <!-- text -->
+    <p>{{songdetail.artist}}</p>
+    <p>{{songdetail.album}}</p>
   </div>
 
   <div class="modal-footer">
@@ -13,7 +15,9 @@
     <button type="button" class="btn btn-success" 
             data-ng-click="cancel()">Back</button>         
     <button class="btn btn-success" 
-            data-ng-click="ok()">Edit</button>
+            data-ng-click="edit(songdetail.url)">Edit</button>
+    <button class="btn btn-success" 
+            data-ng-click="delete(songdetail.url)">Delete</button>
   </div>
 
 </div>

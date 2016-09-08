@@ -1,5 +1,5 @@
 angular.module("Russell")
-  .controller("View", function($scope, $http, $timeout, $uibModal, RootFactory) {
+  .controller("View", function($scope, $http, $timeout, $uibModal, $rootScope, RootFactory) {
 
     $scope.songs = [];
     const errorHandle = (e) => console.log(e);
@@ -24,5 +24,13 @@ angular.module("Russell")
         }//end of resolve  
       });//end of modal.open
     }; 
+
+  $rootScope.$on("reloadPagePlease", function(event) { 
+    tree.currentTaxa.child_taxa.forEach(function(child) {
+      if (child.name === value) {
+        tree.selectedSubtaxa = child;
+      }
+    });
+  });
 
   });
