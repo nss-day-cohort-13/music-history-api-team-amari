@@ -1,6 +1,5 @@
 angular.module("Russell")
   .controller("View", function($scope, $http, $timeout, $uibModal, RootFactory) {
-    $scope.title="view page";
 
     $scope.songs = [];
     const errorHandle = (e) => console.log(e);
@@ -18,10 +17,10 @@ angular.module("Russell")
     $scope.openModal = (songId) => {
       const modalInstance = $uibModal.open({
         size: "lg",
-        templateUrl: "/app/modal.html", 
-        controller: "modalController",
+        templateUrl: "app/modal.html", 
+        controller: "Modal",
         resolve: { 
-          songId: songId
+          'songId': songId
         }//end of resolve  
       });//end of modal.open
     }; 
