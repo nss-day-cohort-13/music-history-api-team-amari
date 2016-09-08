@@ -4,6 +4,7 @@ angular.module("Russell")
     $scope.songdetail = null;
     const errorHandle = (e) => console.log(e);
 
+    //TODO: load album and artist information here.
     RootFactory.getRoot()
       .then((root) => {
         return $http.get(`${root.songs}${songId}`);
@@ -14,14 +15,16 @@ angular.module("Russell")
       });
 
     $scope.edit = function (url) {
+      //open edit div. 
+      //http.put the changes...
       console.log("url", url );
       $uibModalInstance.close();
     };
 
     $scope.delete = function (url) {
+      //deletes selected song.
       return $http.delete(`${url}`)
       .then(()=> {
-        console.log("successfully deleted I think");
         $scope.$emit("reloadPagePlease");
       }, errorHandle)
       .then(()=> {
@@ -30,6 +33,7 @@ angular.module("Russell")
     };
 
     $scope.cancel = function () {
+    //closes modal while doing nothing.
       $uibModalInstance.dismiss("cancel");
     };
 

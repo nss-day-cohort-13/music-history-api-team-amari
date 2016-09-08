@@ -5,32 +5,34 @@ angular.module("Russell")
     const errorHandle = (e) => console.log(e);
 
     // Populate song data.
-    RootFactory.getRoot()
-      .then((root) => {
-        return $http.get(`${root.songs}`);
-      }, errorHandle)
-      .then((songlist) => {
-        $scope.songs = songlist.data;
-        $timeout();
-      }, errorHandle);
+    $scope.loadPage = () => {
+      RootFactory.getRoot()
+        .then((root) => {
+          return $http.get(`${root.songs}`);
+        }, errorHandle)
+        .then((songlist) => {
+          $scope.songs = songlist.data;
+          $timeout();
+        }, errorHandle);
+    };
+    // Call populate song data on page load.
+    $scope.loadPage();
 
     $scope.openModal = (songId) => {
+      //opens a modal to view details of the song clicked.
       const modalInstance = $uibModal.open({
         size: "lg",
         templateUrl: "app/modal.html", 
         controller: "Modal",
         resolve: { 
           'songId': songId
-        }//end of resolve  
-      });//end of modal.open
+        }  
+      });
     }; 
 
-  $rootScope.$on("reloadPagePlease", function(event) { 
-    tree.currentTaxa.child_taxa.forEach(function(child) {
-      if (child.name === value) {
-        tree.selectedSubtaxa = child;
-      }
+    //fancy listener to reload the page when someone edits/deletes a song from the modal.
+    $rootScope.$on("reloadPagePlease", () => { 
+      $scope.loadPage();
     });
-  });
 
   });

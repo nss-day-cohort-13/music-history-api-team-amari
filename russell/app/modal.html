@@ -4,20 +4,21 @@
   <h3>{{songdetail.title}}</h3>
   
 
-  <div class="modal-body">
-    <!-- text -->
+  <div ng-if="!editing" class="modal-body">
+    <p>song detail info will go here.</p>
     <p>{{songdetail.artist}}</p>
     <p>{{songdetail.album}}</p>
   </div>
 
+  <div ng-if="editing" class="modal-body">
+  <p>edit form will go here.</p>
+  </div>
+
   <div class="modal-footer">
     
-    <button type="button" class="btn btn-success" 
-            data-ng-click="cancel()">Back</button>         
-    <button class="btn btn-success" 
-            data-ng-click="edit(songdetail.url)">Edit</button>
-    <button class="btn btn-success" 
-            data-ng-click="delete(songdetail.url)">Delete</button>
+    <button type="button" class="btn btn-success" data-ng-click="cancel()">Back</button>         
+    <button class="btn btn-success" data-ng-click="edit(songdetail.url)">Edit</button>
+    <button class="btn btn-success" data-ng-click="delete(songdetail.url)">Delete</button>
   </div>
 
 </div>
