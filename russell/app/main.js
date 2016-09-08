@@ -12,8 +12,8 @@ angular.module("Russell", ["ngRoute"])
     "$scope",
     "$http", 
     "$timeout", 
-    function($scope, $http, $timeout) {
-
-      $scope.title="hello world";
+    function($scope) {
+      
+      $scope.view = true;
 
     }]);
