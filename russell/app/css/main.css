@@ -1,0 +1,111 @@
+.navbar-fixed-top {
+  margin: 5px 95px 5px 95px;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
+  background-color: #FFB4B0
+}
+
+ul {
+  list-style-type: none;
+  border-style:
+}
+
+li {
+  list-style-type: none;
+  display: inline;
+}
+
+.albSel {
+  width: 180px;
+  margin-bottom: 25px;
+}
+
+.artSel {
+  width: 180px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  color: #785616
+}
+
+.filt1, .filt2 {
+  margin-bottom: 35px;
+}
+
+.search, .visible {
+  width: 275px;
+  height: 380px;
+  float: left;
+  margin: 5px 3px 30px 95px;
+  padding-top: 2%;
+  padding-left: 38px;
+  padding-right: 38px;
+  border-style: solid;
+  border-color: black;
+  background-color: #4DD7FA
+}
+
+.genres-left{
+  float: left;
+  padding-top: 5px;
+}
+
+.genres-right{
+  float: right;
+  margin: 5px;
+}
+
+.filter {
+  padding-top: 20px;
+  padding-left: 60px;
+  margin-right: 25px;
+  display: inline-block;
+}
+
+.editMus {
+  display: inline;
+
+  width: 1090px;
+
+}
+
+article {
+  width: 800px;
+  height: 380px;
+  float: right;
+  margin: 5px 95px 30px 4px;
+  padding-right: 30%;
+  padding-left: 3%;
+  display: inline;
+  border-style: solid;
+  background-color: #FEFAC0
+}
+
+button {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 7px;
+  font-size: 25px;
+}
+
+.list-view {
+  margin-right: 40px;
+}
+
+/*
+.hidden {
+  display: none;
+}*/
+
+/*.visible {
+  display: block;
+}*/
+
+/*#songContainer {
+
+}*/
