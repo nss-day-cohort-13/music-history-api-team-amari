@@ -1,9 +1,5 @@
 <h1>{{ title }}</h1>
 
-<div id="listView"></div>
-    <!-- <div id="moreBtnDiv"><button type="button" class="btn moreBtn">More</button></div> -->
-
-
     <div id="list-view" class="search">
         <!-- <label>Song Length:</label>
         <br>
@@ -11,36 +7,40 @@
 
         <p>
             <label>Artist:</label>
-            <br>
             <select name="Artist" class="artSel">
-                <!-- <option value="Kanye West">Kanye West</option>
-                <option value="PWilly">Pharrell Williams</option>
+                <option ng-repeat="artist in artists" value="{{artist.name}}">{{artist.name}}</option>
+                <!-- <option value="PWilly">Pharrell Williams</option>
                 <option value="Childish G">Childish Gambino</option>
                 <option value="Chance The Rap">Chance The Rapper</option>
                 <option value="Drake">Drake</option> -->
             </select>
         </p>
+    <div class="filt1">
+      <button ng-click="orderByArtist()">Filter Artist</button>
+    </div>
 
-        <p><label>Album:</label>
+        <p>
+            <label>Album:</label>
             <select name="Album" class="albSel">
-            <datalist id="albums">
-            <!--     <option selected="">Thank Me Later</option>
-                <option value="Drake">Thank Me Later</option>
+                <option ng-repeat="album in albums" value="{{album.title}}">{{album.title}}</option>
+              <!--   <option value="Drake">Thank Me Later</option>
                 <option value="MBDTF">MY Beautiful Dark Twisted Fantasy</option>
                 <option value="GIRL">Girl</option>
                 <option value="BTI">Because The Internet</option>
                 <option value="Chance">Somewhere In Paradise</option> -->
-            </datalist>
             </select>
         </p>
-
+    <div class="filt2">
+      <button ng-click="orderByAlbum()">Filter Album</button>
+    </div>
 </div>
+
+
     <article id="songContainer">
-    <p>here is something to see if you can see</p>
+    <div ng-repeat="song in songs">
+        <p>{{song.title}}</p>
+        <button ng-click="openModal(song.id)">Detail</button>
+    </div>
 </article>
 
-<div ng-repeat="song in songs">
-  <p>{{song.title}}</p>
-  <button ng-click="openModal(song.id)">Detail</button>
-</div>
 

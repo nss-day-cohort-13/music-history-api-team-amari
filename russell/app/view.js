@@ -4,15 +4,33 @@ angular.module("Russell")
     $scope.songs = [];
     const errorHandle = (e) => console.log(e);
 
-    // Populate song data.
+    // Populate data.
     RootFactory.getRoot()
       .then((root) => {
-        return $http.get(`${root.songs}`);
+        $http.get(root.songs)
+            .then((songlist) => {
+                $scope.songs = songlist.data;
+                $timeout();
+            }, errorHandle);
+        return root
       }, errorHandle)
-      .then((songlist) => {
-        $scope.songs = songlist.data;
-        $timeout();
-      }, errorHandle);
+      .then((root) => {
+        $http.get(root.artists)
+            .then((aristslist) => {
+                $scope.artists = aristslist.data;
+                $timeout();
+            }, errorHandle);
+            return root
+        }, errorHandle)
+      .then((root) => {
+        $http.get(root.albums)
+            .then((albumslist) => {
+                $scope.albums = albumslist.data
+                $timeout();
+            }, errorHandle);
+      })
+
+
 
     $scope.openModal = (songId) => {
       const modalInstance = $uibModal.open({

@@ -19,15 +19,20 @@ li {
 
 .albSel {
   width: 180px;
+  margin-bottom: 25px;
 }
 
 .artSel {
   width: 180px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 h1 {
   color: #785616
+}
+
+.filt1, .filt2 {
+  margin-bottom: 35px;
 }
 
 .search, .visible {
