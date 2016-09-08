@@ -43,7 +43,7 @@
             <label class="col-xs-2 col-form-label" for="album">Album</label>
             <div class="col-xs-10">
               <select ng-model="modal.songdetail.albums[0]">
-                <option ng-repeat="album in modal.albums" value="album">{{ album.title }}</option>
+                <option ng-repeat="album in modal.albums" value="{{ album.url }}">{{ album.title }}</option>
               </select>
             </div>
         </div>

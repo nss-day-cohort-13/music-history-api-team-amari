@@ -43,6 +43,7 @@ angular.module("Russell")
 
     modal.edit = function () {
       //update selected song information. 
+      console.log("song to send", modal.songdetail );
       return $http.put(`${modal.songdetail.url}`, modal.songdetail)
         .then(()=> {
           $scope.$emit("reloadPagePlease");
