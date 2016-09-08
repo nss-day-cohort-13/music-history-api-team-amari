@@ -1,9 +1,19 @@
-
 <nav class="navbar-fixed-top">
 <h1>Music History</h1>
-<button ng-disabled="view" ng-click="view=!view" class="btn btn-lg btn-danger">View Music</button>  
-<button ng-disabled="!view" ng-click="view=!view" class="btn btn-lg btn-danger">Add Music</button>  
+<button ng-disabled="view" ng-click="view=!view" class="btn btn-lg btn-danger">View Music</button>
+<button ng-disabled="!view" ng-click="view=!view" class="btn btn-lg btn-danger">Add Music</button>
 </nav>
+
 
 <div style="margin-top: 150px" ng-if="view" ng-controller="View" ng-include="'app/view.html'"></div>
 <div style="margin-top: 150px" ng-if="!view" ng-controller="Edit" ng-include="'app/edit.html'"></div>
+
+
+
+
+<!-- </div>
+<article id="songContainer">
+    <p>here is something to see if you can see</p>
+</article> -->
+
+
