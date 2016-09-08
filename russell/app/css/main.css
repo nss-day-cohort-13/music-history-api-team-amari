@@ -1,8 +1,9 @@
-nav {
+.navbar-fixed-top {
   margin: 5px 95px 5px 95px;
   padding: 10px;
   border-style: solid;
   border-color: black;
+  border-width: 3px;
   background-color: #FFB4B0
 }
 
@@ -16,8 +17,13 @@ li {
   display: inline;
 }
 
+.albSel {
+  width: 180px;
+}
+
 .artSel {
   width: 180px;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -52,6 +58,12 @@ h1 {
   padding-left: 60px;
   margin-right: 25px;
   display: inline-block;
+}
+
+.editMus {
+  display: inline;
+
+  width: 1090px;
 
 }
 
