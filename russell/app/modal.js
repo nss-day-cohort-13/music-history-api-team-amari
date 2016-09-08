@@ -54,9 +54,9 @@ angular.module("Russell")
         });
     };
 
-    modal.delete = function (url) {
+    modal.delete = function () {
       //deletes selected song.
-      return $http.delete(`${url}`)
+      return $http.delete(`${modal.songdetail.url}`)
       .then(()=> {
         $scope.$emit("reloadPagePlease");
       }, errorHandle)
