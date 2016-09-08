@@ -21,8 +21,8 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
 
 class AlbumSerializer(serializers.HyperlinkedModelSerializer):
 
-    songs = SongSerializer(many=True, read_only=True)
-    artists = ArtistSerializer(many=True, read_only=True)
+    songs = SongSerializer(many=True)
+    artists = ArtistSerializer(many=True)
 
     class Meta:
         model = Album
