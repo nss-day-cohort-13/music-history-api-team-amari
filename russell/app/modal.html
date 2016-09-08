@@ -1,20 +1,58 @@
 <div>
 
 <div class="modal-header">
-  <h3>{{songdetail.title}}</h3>
+  <h1>{{modal.songdetail.title}}</h1>
+  <div ng-if="!modal.editing">
+      <!-- standard view -->
+    <div class="modal-body">
+      <div ng-repeat="albumurl in modal.songdetail.albums">
+        <div ng-repeat="album in modal.albums">
+          <div ng-if="album.url==albumurl">
+            <h3>Album: {{album.title}}</h3>
+            <h5>Artists:</h5>
+            <div ng-repeat="artisturl in album.artists">
+              <div ng-repeat="artist in modal.artists">
+                <ul>
+                  <li ng-if="artist.url == artisturl">{{artist.name}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-  <div class="modal-body">
-    <!-- text -->
-
+    <div class="modal-footer">
+      <button class="btn btn-success" data-ng-click="modal.editing = !modal.editing">Edit</button>
+      <button class="btn btn-success" data-ng-click="modal.delete()">Delete</button>
+      <button class="btn btn-success" data-ng-click="modal.cancel()">Close</button>         
+    </div>
   </div>
 
-  <div class="modal-footer">
-
-    <button type="button" class="btn btn-success"
-            data-ng-click="cancel()">Back</button>
-    <button class="btn btn-success"
-            data-ng-click="ok()">Edit</button>
+  <div ng-if="modal.editing">
+  <!-- edit view. -->
+    <form ng-submit="modal.edit()">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="title">Title</label>
+            <div class="col-xs-10">
+              <input type="text" id="title" ng-model="modal.songdetail.title">
+            </div>
+          </div>
+            <label class="col-xs-2 col-form-label" for="album">Album</label>
+            <div class="col-xs-10">
+              <select multiple="true" ng-model="modal.songdetail.albums">
+                <option ng-repeat="album in modal.albums" value="{{ album.url }}">{{ album.title }}</option>
+              </select>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit">Submit</button>
+      <button class="btn btn-success" data-ng-click="modal.editing = !modal.editing">Cancel</button>
+        <button class="btn btn-success" data-ng-click="modal.cancel()">Close</button>         
+      </div>
+    </form>
   </div>
-
 </div>
