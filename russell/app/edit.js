@@ -37,9 +37,9 @@ angular.module("Russell")
 
 	$scope.createAlbum = function(selectedAlbum, selectedArtist) {
 		// console.log("In submit")
-		// console.log("selectedAlbum = ", selectedAlbum)
-		result = `{"title": "${selectedSong}","albums": ["${selectedAlbum}"]}`
-		NewItemFactory.postItems(result)
+		console.log("selectedArtist = ", selectedArtist)
+		result = `{"title": "${selectedAlbum}","artists": ["${selectedArtist}"]}`
+		NewItemFactory.postNewAlbum(result)
 	}
 
   });

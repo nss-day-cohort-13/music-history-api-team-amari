@@ -23,21 +23,21 @@
         <span>
             Artist:<br>
             <input name="artist" type="text" ng-model="selectedArtist">
-            <button ng-click="createArtist(selectedArtist)">Create Artist</button>
+  *          <button ng-click="createArtist(selectedArtist)">Create Artist</button>
         </span><br>
 
 
         <!-- ALBUM -->
-<!--         <span>
+        <span>
             Album:<br>
-            <input name="album" type="text" ng-model="selectedAlbum">
+            <input name="album" type="text" ng-model="newAlbum">
             Existing Artist:
             <select ng-model="selectedArtist">
                 <option ng-repeat="item in artistList" value="{{item.url}}">{{item.name}}</option>
             </select>
-            <button ng-click="createAlbum(selectedAlbum.title, selectedArtist)">Create Album</button>
+            <button ng-click="createAlbum(newAlbum, selectedArtist)">Create Album</button>
         </span><br>
- -->
+
 
 
 

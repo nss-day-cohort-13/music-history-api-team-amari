@@ -49,6 +49,13 @@ angular.module("Russell", ["ngRoute", "ui.bootstrap"])
         .then(
           res => console.log("res = ", res.data)
         )
+      },
+      postNewAlbum:(albumInfo) => {
+        console.log("albumInfo = ", albumInfo)
+        return $http.post("http://localhost:8000/albums/", albumInfo)
+        .then(
+          res => console.log("res = ", res.data)
+        )
       }
     }
 
