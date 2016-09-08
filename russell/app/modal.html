@@ -1,0 +1,26 @@
+<div>
+
+<div class="modal-header">
+  <h3>{{modalController.data.commonName}}</h3>
+  <h5>Scientific Name: {{modalController.data.scientificName}}</h5>
+  
+
+<div class="modal-body">
+  <!-- text -->
+  <div  class="infoText" ng-repeat="text in modalController.data.textStuff">
+    <p ng-bind-html="renderHtml(text)"></p>
+  </div>
+</div>
+
+
+<div class="modal-footer">
+
+  
+  <button type="button" class="btn btn-success" 
+          data-ng-click="modalController.cancel()">Back</button>
+  <a class="btn btn-success" href="https://en.wikipedia.org/wiki/{{modalController.data.scientificName}}" target="_blank">Search Wikipedia</a>          
+  <button class="btn btn-success" 
+          ng-if="modalController.selectable === true"
+          data-ng-click="modalController.ok(modalController.data.scientificName);">Select This Taxa</button>
+</div>
+</div>
