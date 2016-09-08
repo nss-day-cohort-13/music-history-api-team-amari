@@ -8,22 +8,39 @@ angular.module("Russell")
     $scope.loadPage = () => {
       RootFactory.getRoot()
         .then((root) => {
-          return $http.get(`${root.songs}`);
+          $http.get(root.songs)
+              .then((songlist) => {
+                $scope.songs = songlist.data;
+                $timeout();
+              }, errorHandle);
+          return root;
         }, errorHandle)
-        .then((songlist) => {
-          $scope.songs = songlist.data;
-          $timeout();
-        }, errorHandle);
+        .then((root) => {
+          $http.get(root.artists)
+              .then((aristslist) => {
+                $scope.artists = aristslist.data;
+                $timeout();
+              }, errorHandle);
+          return root;
+        }, errorHandle)
+        .then((root) => {
+          $http.get(root.albums)
+              .then((albumslist) => {
+                $scope.albums = albumslist.data;
+                $timeout();
+              }, errorHandle);
+        });
     };
-    // Call populate song data on page load.
+   // Call populate song data on page load.
     $scope.loadPage();
 
     $scope.openModal = (songId) => {
       //opens a modal to view details of the song clicked.
       const modalInstance = $uibModal.open({
         size: "lg",
-        templateUrl: "app/modal.html", 
+        templateUrl: "app/modal.html",
         controller: "Modal",
+
         controllerAs: "modal",
         resolve: { 
           'songId': songId
