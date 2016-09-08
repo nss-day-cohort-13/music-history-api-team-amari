@@ -11,9 +11,9 @@ angular.module("Russell", ["ngRoute", "ui.bootstrap"])
   .factory("RootFactory", ($http) => {
 
     const httpget = $http.get("http://localhost:8000");
-    const Albums = $http.get("http://localhost:8000/albums.json")
-    const Artists = $http.get("http://localhost:8000/artists.json")
-    const Songs = $http.get("http://localhost:8000/songs.json")
+    const Albums = $http.get("http://localhost:8000/albums");
+    const Artists = $http.get("http://localhost:8000/artists");
+    const Songs = $http.get("http://localhost:8000/songs");
 
     return {
       getRoot: () => {
@@ -36,7 +36,7 @@ angular.module("Russell", ["ngRoute", "ui.bootstrap"])
 
     return {
       postItems: (songInfo) => {
-        console.log("songInfo = ", songInfo)
+        console.log("songInfo = ", songInfo);
         return $http.post("http://localhost:8000/songs/", songInfo)
         .then(
           res => console.log("res = ", res.data)

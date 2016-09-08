@@ -25,6 +25,7 @@ angular.module("Russell")
       })
       .then(() => {
         return $http.get(`${modal.root.albums}`);
+        // return RootFactory.getAlbums();
       }, errorHandle)
       .then((albums) => {
         console.log("albums", albums.data);
@@ -33,6 +34,7 @@ angular.module("Russell")
       })
       .then(() =>  {
         return $http.get(`${modal.root.artists}`);
+        // return RootFactory.getArtists();
       }, errorHandle)
       .then((artists) => {
         console.log("artists", artists.data);
@@ -43,7 +45,6 @@ angular.module("Russell")
 
     modal.edit = function () {
       //update selected song information. 
-      console.log("song to send", modal.songdetail );
       return $http.put(`${modal.songdetail.url}`, modal.songdetail)
         .then(()=> {
           $scope.$emit("reloadPagePlease");
