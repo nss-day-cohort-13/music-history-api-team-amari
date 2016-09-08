@@ -1,18 +1,29 @@
 angular.module("Russell")
-  .controller("View", function($scope, $http, $timeout) {
+  .controller("View", function($scope, $http, $timeout, $uibModal, RootFactory) {
     $scope.title="view page";
 
     $scope.songs = [];
     const errorHandle = (e) => console.log(e);
 
     // Populate song data.
-    $http.get("http://localhost:8000")
+    RootFactory.getRoot()
       .then((root) => {
-        return $http.get(`${root.data.songs}`);
+        return $http.get(`${root.songs}`);
       }, errorHandle)
       .then((songlist) => {
         $scope.songs = songlist.data;
         $timeout();
       }, errorHandle);
+
+    $scope.openModal = (songId) => {
+      const modalInstance = $uibModal.open({
+        size: "lg",
+        templateUrl: "/app/modal.html", 
+        controller: "modalController",
+        resolve: { 
+          songId: songId
+        }//end of resolve  
+      });//end of modal.open
+    }; 
 
   });
