@@ -1,27 +1,58 @@
 angular.module("Russell")
   .controller("Modal", function($scope, $http, $timeout, $uibModal, RootFactory, $uibModalInstance, songId) {
+    const modal = this;
 
-    $scope.songdetail = null;
+    modal.root = null;
+
+    modal.songdetail = null;
+
+    modal.albums = null;
+    
+    modal.artists = null;
+
+
     const errorHandle = (e) => console.log(e);
 
-    //TODO: load album and artist information here.
     RootFactory.getRoot()
       .then((root) => {
-        return $http.get(`${root.songs}${songId}`);
+        modal.root = root;
+        return $http.get(`${modal.root.songs}${songId}`);
       }, errorHandle)
       .then((songdetail) => {
-        $scope.songdetail = songdetail.data;
+        modal.songdetail = songdetail.data;
+        console.log("modal song detail", modal.songdetail );
+        $timeout();
+      })
+      .then(() => {
+        return $http.get(`${modal.root.albums}`);
+      }, errorHandle)
+      .then((albums) => {
+        console.log("albums", albums.data);
+        modal.albums = albums.data;
+        $timeout();
+      })
+      .then(() =>  {
+        return $http.get(`${modal.root.artists}`);
+      }, errorHandle)
+      .then((artists) => {
+        console.log("artists", artists.data);
+        modal.artists = artists.data;
         $timeout();
       });
 
-    $scope.edit = function (url) {
-      //open edit div. 
-      //http.put the changes...
-      console.log("url", url );
-      $uibModalInstance.close();
+
+    modal.edit = function () {
+      //update selected song information. 
+      return $http.put(`${modal.songdetail.url}`, modal.songdetail)
+        .then(()=> {
+          $scope.$emit("reloadPagePlease");
+        }, errorHandle)
+        .then(()=> {
+          $uibModalInstance.close();
+        });
     };
 
-    $scope.delete = function (url) {
+    modal.delete = function (url) {
       //deletes selected song.
       return $http.delete(`${url}`)
       .then(()=> {
@@ -32,8 +63,8 @@ angular.module("Russell")
       });
     };
 
-    $scope.cancel = function () {
-    //closes modal while doing nothing.
+    modal.cancel = function () {
+    //closes modal, doing nothing.
       $uibModalInstance.dismiss("cancel");
     };
 

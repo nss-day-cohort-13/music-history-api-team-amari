@@ -24,6 +24,7 @@ angular.module("Russell")
         size: "lg",
         templateUrl: "app/modal.html", 
         controller: "Modal",
+        controllerAs: "modal",
         resolve: { 
           'songId': songId
         }  

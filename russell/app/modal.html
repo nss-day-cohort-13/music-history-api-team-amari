@@ -1,24 +1,52 @@
 <div>
 
 <div class="modal-header">
-  <h3>{{songdetail.title}}</h3>
-  
+  <h1>{{modal.songdetail.title}}</h1>
+  <div ng-if="!modal.editing">
+      <!-- standard view -->
+    <div class="modal-body">
+      <div ng-repeat="albumurl in modal.songdetail.albums">
+        <div ng-repeat="album in modal.albums">
+          <div ng-if="album.url==albumurl">
+            <h3>Album: {{album.title}}</h3>
+            <h5>Artists:</h5>
+            <div ng-repeat="artisturl in album.artists">
+              <div ng-repeat="artist in modal.artists">
+                <ul>
+                  <li ng-if="artist.url == artisturl">{{artist.name}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div ng-if="!editing" class="modal-body">
-    <p>song detail info will go here.</p>
-    <p>{{songdetail.artist}}</p>
-    <p>{{songdetail.album}}</p>
+    <div class="modal-footer">
+      <button class="btn btn-success" data-ng-click="modal.editing = !modal.editing">Edit</button>
+      <button class="btn btn-success" data-ng-click="modal.delete()">Delete</button>
+      <button class="btn btn-success" data-ng-click="modal.cancel()">Close</button>         
+    </div>
   </div>
 
-  <div ng-if="editing" class="modal-body">
-  <p>edit form will go here.</p>
+  <div ng-if="modal.editing">
+  <!-- edit view. -->
+    <form ng-submit="modal.edit()">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="title">Title</label>
+            <div class="col-xs-10">
+              <input type="text" id="title" ng-model="modal.songdetail.title">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit">Submit</button>
+      <button class="btn btn-success" data-ng-click="modal.editing = !modal.editing">Cancel</button>
+        <button class="btn btn-success" data-ng-click="modal.cancel()">Close</button>         
+      </div>
+    </form>
   </div>
-
-  <div class="modal-footer">
-    
-    <button type="button" class="btn btn-success" data-ng-click="cancel()">Back</button>         
-    <button class="btn btn-success" data-ng-click="edit(songdetail.url)">Edit</button>
-    <button class="btn btn-success" data-ng-click="delete(songdetail.url)">Delete</button>
-  </div>
-
 </div>
