@@ -1,0 +1,28 @@
+<div ng-controller="Edit">
+    <form action="" method="post" accept-charset="utf-8">
+        Song:<br>
+        <input name="song" type="text" ng-model="music.Song"><br>
+
+        <span>
+            Existing Album
+            <select ng-model="selectedAlbum">
+                <option ng-repeat="item in items" value="{{item}}">{{item}}</option>
+            </select>
+            New Album:
+            <input name="album" type="text" ng-model="music.Album"><br>
+        </span>
+
+        <span>
+            Existing Artist
+            <select ng-model="selectedArtist">
+                <option ng-repeat="item in items" value="{{item}}">{{item}}</option>
+            </select>
+            New Artist:
+            <input name="artist" type="text" ng-model="music.Artist"><br>
+        </span>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<!-- 
+<p><a href="{% url 'tickets:login' %}">Return to homepage</a>.</p> -->
