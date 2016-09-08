@@ -18,9 +18,26 @@ angular.module("Russell")
 		)
 	).then($timeout())
 
-	$scope.submit = function(selectedSong, selectedAlbum, selectedArtist) {
-		console.log("In submit")
+	$scope.createSong = function(selectedSong, selectedAlbum) {
+		// console.log("In submit")
+		// console.log("selectedAlbum = ", selectedAlbum)
 		console.log("selectedAlbum = ", selectedAlbum)
+		result = `{"title": "${selectedSong}","albums": ["${selectedAlbum}"]}`
+		NewItemFactory.postNewSong(result)
+	}
+
+
+	$scope.createArtist = function(selectedArtist) {
+		// console.log("In submit")
+		// console.log("selectedAlbum = ", selectedAlbum)
+		result = `{"name": "${selectedArtist}"}`
+		NewItemFactory.postNewArtist(result)
+	}
+
+
+	$scope.createAlbum = function(selectedAlbum, selectedArtist) {
+		// console.log("In submit")
+		// console.log("selectedAlbum = ", selectedAlbum)
 		result = `{"title": "${selectedSong}","albums": ["${selectedAlbum}"]}`
 		NewItemFactory.postItems(result)
 	}
