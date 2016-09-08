@@ -6,7 +6,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=55)
 
     def __str__(self):
-        return "{}: {}".format(self.id, self.title)
+        return "{}: {}".format(self.id, self.name)
 
 
 class Song(models.Model):
