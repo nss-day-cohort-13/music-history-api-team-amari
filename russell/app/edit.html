@@ -6,28 +6,41 @@
         <p><label>Album<input type="text" id="albumIn" name="" value=""></label></p>
 
         <button id="addMyMusic" type="submit">Add</button> -->
-        Song:<br>
-        <input name="song" type="text" ng-model="selectedSong"><br>
 
-        <span>
-            Existing Album
-            <select ng-model="selectedAlbum">
-                <option ng-repeat="item in albumList" value="{{item.url}}">{{item.title}}</option>
-            </select>
-<!--             New Album:
-            <input name="album" type="text" ng-model="selectedAlbum"><br> -->
-        </span>
+        <!-- ARTIST -->
+        <div class="editDiv">
+            Artist:<!-- <br> -->
+            <input name="artist" type="text" ng-model="newArtist" class="upperEditInput">
+            <button ng-click="createArtist(newArtist)" class="editButton">Create Artist</button>
+        </div><br>
 
-        <span>
-            Existing Artist
+
+        <!-- ALBUM -->
+        <div class="editDiv">
+            Album:<!-- <br> -->
+            <input name="album" type="text" ng-model="newAlbum" class="editInput">
+            Existing Artist:
             <select ng-model="selectedArtist">
                 <option ng-repeat="item in artistList" value="{{item.url}}">{{item.name}}</option>
             </select>
-<!--             New Artist:
-            <input name="artist" type="text" ng-model="selectedArtist"><br> -->
-        </span>
+            <button ng-click="createAlbum(newAlbum, selectedArtist)" class="editButton">Create Album</button>
+        </div><br>
 
-        <!-- <button type="submit">Submit</button> -->
-        <button ng-click="submit(selectedSong, selectedAlbum, selectedArtist)">Submit</button>
+
+        <!-- SONG -->
+        <div class="editDiv">
+            Song:<!-- <br> -->
+            <input name="song" type="text" ng-model="selectedSong" class="upperEditInput">
+            Existing Album:
+            <select ng-model="selectedAlbum">
+                <option ng-repeat="item in albumList" value="{{item.url}}">{{item.title}}</option>
+            </select>
+            <button ng-click="createSong(selectedSong, selectedAlbum)" class="editButton">Create Song</button>
+        </div><br>
+
+
+
+
+
     </article>
 </div>

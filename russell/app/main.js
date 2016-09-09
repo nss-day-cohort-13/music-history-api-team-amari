@@ -11,9 +11,9 @@ angular.module("Russell", ["ngRoute", "ui.bootstrap"])
   .factory("RootFactory", ($http) => {
 
     const httpget = $http.get("http://localhost:8000");
-    const Albums = $http.get("http://localhost:8000/albums");
-    const Artists = $http.get("http://localhost:8000/artists");
-    const Songs = $http.get("http://localhost:8000/songs");
+    const Albums = $http.get("http://localhost:8000/albums")
+    const Artists = $http.get("http://localhost:8000/artists")
+    const Songs = $http.get("http://localhost:8000/songs")
 
     return {
       getRoot: () => {
@@ -35,12 +35,26 @@ angular.module("Russell", ["ngRoute", "ui.bootstrap"])
     // const sendSong = $http.post("http://localhost:8000/songs", songInfo);
 
     return {
-      postItems: (songInfo) => {
-        console.log("songInfo = ", songInfo);
+      postNewSong: (songInfo) => {
+        console.log("songInfo = ", songInfo)
         return $http.post("http://localhost:8000/songs/", songInfo)
         .then(
           res => console.log("res = ", res.data)
           // console.log("res.data = " res.data) 
+        )
+      },
+      postNewArtist: (artistInfo) => {
+        console.log("artistInfo = ", artistInfo)
+        return $http.post("http://localhost:8000/artists/", artistInfo)
+        .then(
+          res => console.log("res = ", res.data)
+        )
+      },
+      postNewAlbum:(albumInfo) => {
+        console.log("albumInfo = ", albumInfo)
+        return $http.post("http://localhost:8000/albums/", albumInfo)
+        .then(
+          res => console.log("res = ", res.data)
         )
       }
     }
