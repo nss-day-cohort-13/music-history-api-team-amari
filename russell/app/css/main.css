@@ -67,9 +67,10 @@ h1 {
 
 .editMus {
   display: inline;
-
   width: 1090px;
-
+  padding-top: 30px;
+  padding-left: 33px;
+  padding-right: 0px;
 }
 
 article {
@@ -95,6 +96,31 @@ button {
 
 .list-view {
   margin-right: 40px;
+}
+
+.editInput {
+  margin-left: 23px;
+  margin-right: 40px;
+}
+
+.upperEditInput {
+  margin-left: 30px;
+  margin-right: 40px;
+}
+
+.editArticle {
+  width: 75%;
+}
+
+.editButton {
+  font-size: 14px;
+  padding: 1px 7px;
+  border: solid black 1px;
+  border-radius: 0;
+}
+
+.editDiv {
+  margin-top: 8px;
 }
 
 /*
